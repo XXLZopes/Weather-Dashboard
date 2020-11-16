@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--font awesome CDN-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!--bootstrap CDN-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="bg-dark text-light text-center">Weather Dashboard</h1>
+    </header>
+
+    <div class="container-fluid d-flex">
+      <div class="searchContainer bg-light col-md-4">
+        <!-- style="padding-left: 10px; padding-right: 10px; width: fit-content"> -->
+        <h5 class="text-dark">Search for a City:</h5>
+        <input
+          id="userSearch"
+          type="text"
+          style="padding-top: 7px; padding-bottom: 2px"
+        />
+        <!-- start of search button -->
+        <button
+          class="btn btn-primary"
+          id="search-button"
+          style="margin-bottom: 10px"
+        >
+          <i class="fa fa-search"></i>
+        </button>
+        <!-- end of search button -->
+        <div class="card" id="location"></div>
+      </div>
+
+      <!--right container-->
+      <div class="rightContainer col-md-8 border" style="height: fit-content">
+        <div id="cardContainer" class="cardContainer">
+          <div id="card" class="card-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
