@@ -63,6 +63,7 @@ function fetchRequestOnSymanticButtons(buttonEl) {
       //consoloe log JSON response
       .then (function(data){
         displayRequest(data)
+        displayRequestBlue(data)
         //createListItem(data)
       })
       .catch(function (error) {
@@ -103,6 +104,7 @@ function fetchRequest(searchInput) {
       //consoloe log JSON response
       .then (function(data){
         displayRequest(data)
+        displayRequestBlue(data)
         //createListItem(data)
       })
       .catch(function (error) {
@@ -144,3 +146,41 @@ function displayRequest(data){
     cardEl.append(windEl);
     cardEl.append(uvEl)
 }
+
+function displayRequestBlue(data){
+    console.log(data);
+    // create card content 
+    // city and date
+    let date1 = document.getElementById('date1')
+    date1.textContent = data.daily[0].dt
+    let date2 = document.getElementById('date2')
+    date2.textContent = data.daily[1].dt
+    let date3 = document.getElementById('date3')
+    date3.textContent = data.daily[2].dt
+    let date4 = document.getElementById('date4')
+    date4.textContent = data.daily[3].dt
+    let date5 = document.getElementById('date5')
+    date5.textContent = data.daily[4].dt
+    //temperature 
+    let temp1 = document.getElementById('temp1')
+    temp1.textContent = data.daily[0].temp.day+'°F'
+    let temp2 = document.getElementById('temp2')
+    temp2.textContent = data.daily[1].temp.day+'°F'
+    let temp3 = document.getElementById('temp3')
+    temp3.textContent = data.daily[2].temp.day+'°F'
+    let temp4 = document.getElementById('temp4')
+    temp4.textContent = data.daily[3].temp.day+'°F'
+    let temp5 = document.getElementById('temp5')
+    temp5.textContent = data.daily[4].temp.day='°F'
+    // humidity
+    let humidity1 = document.getElementById('humidity1')
+    humidity1.textContent = data.daily[0].humidity+'%'
+    let humidity2 = document.getElementById('humidity2')
+    humidity2.textContent = data.daily[1].humidity+'%'
+    let humidity3 = document.getElementById('humidity3')
+    humidity3.textContent = data.daily[2].humidity+'%'
+    let humidity4 = document.getElementById('humidity4')
+    humidity4.textContent = data.daily[3].humidity+'%'
+    let humidity5 = document.getElementById('humidity5')
+    humidity5.textContent = data.daily[4].humidity
+}+'%'
