@@ -118,7 +118,8 @@ function displayRequest(data){
     // create card content 
     // city and date
     let dateEl = document.createElement('p')
-    dateEl.textContent = data.current.dt
+    dateEl.textContent = timeConverter(data.current.dt );
+    // moment().format('MM-DD-YYYY');
     // weather icon
     let imgEl = document.createElement("img");
     imgEl.setAttribute('src', 'http://openweathermap.org/img/w/' + data.current.weather[0].icon + '.png')
@@ -133,7 +134,16 @@ function displayRequest(data){
     windEl.textContent = 'Wind Speed: '+data.current.wind_speed + " mph"
     // uv index
     let uvEl = document.createElement('p')
+
+    //change uv index background color depending on value
+    if(data.current.uvi > 5){
     uvEl.setAttribute('class', 'bg-danger');
+    }
+    else if (data.current.uvi>=3){
+      uvEl.setAttribute('class', 'bg-warning');
+    } else{
+      uvEl.setAttribute('class', 'bg-success');
+    }
     uvEl.setAttribute('style', 'width: fit-content; padding: 0 10px 0 10px; border-radius: 10px;');
     
 
@@ -152,15 +162,15 @@ function displayRequestBlue(data){
     // create card content 
     // city and date
     let date1 = document.getElementById('date1')
-    date1.textContent = data.daily[0].dt
+    date1.textContent = timeConverter(data.daily[0].dt );
     let date2 = document.getElementById('date2')
-    date2.textContent = data.daily[1].dt
+    date2.textContent = timeConverter(data.daily[1].dt );
     let date3 = document.getElementById('date3')
-    date3.textContent = data.daily[2].dt
+    date3.textContent = timeConverter(data.daily[2].dt );
     let date4 = document.getElementById('date4')
-    date4.textContent = data.daily[3].dt
+    date4.textContent = timeConverter(data.daily[3].dt );
     let date5 = document.getElementById('date5')
-    date5.textContent = data.daily[4].dt
+    date5.textContent = timeConverter(data.daily[4].dt );
     //temperature 
     let temp1 = document.getElementById('temp1')
     temp1.textContent = data.daily[0].temp.day+'°F'
@@ -171,7 +181,7 @@ function displayRequestBlue(data){
     let temp4 = document.getElementById('temp4')
     temp4.textContent = data.daily[3].temp.day+'°F'
     let temp5 = document.getElementById('temp5')
-    temp5.textContent = data.daily[4].temp.day='°F'
+    temp5.textContent = data.daily[4].temp.day+'°F'
     // humidity
     let humidity1 = document.getElementById('humidity1')
     humidity1.textContent = data.daily[0].humidity+'%'
@@ -182,5 +192,16 @@ function displayRequestBlue(data){
     let humidity4 = document.getElementById('humidity4')
     humidity4.textContent = data.daily[3].humidity+'%'
     let humidity5 = document.getElementById('humidity5')
-    humidity5.textContent = data.daily[4].humidity
-}+'%'
+    humidity5.textContent = data.daily[4].humidity+'%'
+}
+
+function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var day = a.getDate();
+  var time = month + ' ' + day + ' ' + year ;
+  return time;
+}
+console.log(timeConverter(1605506585));
